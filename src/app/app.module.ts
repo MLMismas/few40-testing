@@ -9,6 +9,10 @@ import { ShoppingListComponent } from './components/shopping-list/shopping-list.
 import { DataService } from './components/shopping-list/data.service';
 import { EnvironmentService } from './services/environment.service';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { BookEffects } from './effects/book.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 const serviceToUse = new DefaultsService();
 serviceToUse._default = 'PIZZA IS BEST!';
@@ -22,7 +26,9 @@ serviceToUse._default = 'PIZZA IS BEST!';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([BookEffects])
   ],
   providers: [{ provide: DefaultsService, useValue: serviceToUse },
     DataService,
