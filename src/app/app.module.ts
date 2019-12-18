@@ -13,6 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { BookEffects } from './effects/book.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { BooksComponent } from './components/books/books.component';
+import { BookDataService } from './services/books-data.service';
 
 const serviceToUse = new DefaultsService();
 serviceToUse._default = 'PIZZA IS BEST!';
@@ -21,7 +23,8 @@ serviceToUse._default = 'PIZZA IS BEST!';
   declarations: [
     AppComponent,
     SuperBasicComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ serviceToUse._default = 'PIZZA IS BEST!';
   ],
   providers: [{ provide: DefaultsService, useValue: serviceToUse },
     DataService,
+    BookDataService,
     EnvironmentService
   ],
   bootstrap: [AppComponent]

@@ -1,2 +1,8 @@
-<app-shopping-list></app-shopping-list>
-<app-super-basic></app-super-basic>
+<nav>
+  <a [routerLink]="['shopping']">shopping</a>
+  <a [routerLink]="['basic']">basic</a>
+  <a [routerLink]="['books']">books</a>
+</nav>
+<main>
+  <router-outlet></router-outlet>
+</main>

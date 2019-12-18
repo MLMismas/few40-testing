@@ -1,0 +1,12 @@
+<input type="button"
+       data-books-load
+       value="Load Books"
+       (click)="load()">
+
+<ol>
+  <li *ngFor="let book of books$ | async; let i = index">
+    <span [attr.data-book-item]="i">
+      {{book.title}} by {{book.author}}
+    </span>
+  </li>
+</ol>

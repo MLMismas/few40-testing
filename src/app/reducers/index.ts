@@ -21,8 +21,10 @@ export const _selectBookBranch = (state: AppState) => state.books;
 export const _selectCounterBranch = (state: AppState) => state.counter;
 
 // 3. Helpers
-
+export const { selectAll } = fromBooks.adapter.getSelectors(_selectBookBranch);
 // 4. For components
+
+
 export const selectCurrentCount = createSelector(
   _selectCounterBranch,
   b => b.current
@@ -37,4 +39,9 @@ export const selectNextNumber = createSelector(
   selectCurrentCount,
   selectCountingBy,
   (c, b) => c + b
+);
+
+export const selectBooksArray = createSelector(
+  selectAll,
+  a => a
 );
